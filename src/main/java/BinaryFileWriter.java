@@ -10,7 +10,7 @@ public class BinaryFileWriter {
     public void writeBytes(byte[]bytes, String fileName){
         try {
             Files.createDirectories(Paths.get(dataDir)); //Create dir if not exists
-            FileOutputStream fileOutputStream = new FileOutputStream(dataDir + "/" + fileName);
+            FileOutputStream fileOutputStream = new FileOutputStream(dataDir + "/" + fileName,true);
             fileOutputStream.write(bytes);
             fileOutputStream.close(); //Problem?
         } catch (IOException e) {
@@ -19,6 +19,7 @@ public class BinaryFileWriter {
     }
 
     public static void main(String[] args) {
-        new BinaryFileWriter().writeBytes("testData\r\n".getBytes(StandardCharsets.UTF_8),"test.dat");
+        new BinaryFileWriter().writeBytes("Æbler og pærer\r\n".getBytes(StandardCharsets.UTF_8),"test.dat");
+        new BinaryFileWriter().writeBytes(new byte[]{65, 98, 101},"test.dat");
     }
 }
