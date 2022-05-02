@@ -1,3 +1,5 @@
+package ioExamples;
+
 import data.Course;
 
 import java.io.*;
